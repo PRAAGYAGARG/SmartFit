@@ -58,6 +58,7 @@ public class KeycloakUserSyncFilter implements WebFilter {
         return chain.filter(exchange);
     }
 
+    //extract userDetails from token like sub(which was keyCloakId as we saw on jwt.io website) , etc
     private RegisterRequest getUserDetails(String token) {
         try {
             String tokenWithoutBearer = token.replace("Bearer", "").trim();

@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 
+
+//this file will actually send req to endpt and then response will come here as true/false
 @Service
 @RequiredArgsConstructor
 @Slf4j

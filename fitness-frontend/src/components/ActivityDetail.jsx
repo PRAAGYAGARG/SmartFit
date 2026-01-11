@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router';
 import { getActivityDetail } from '../services/api';
 
+//This pg Shows the Ai generated tailored recommendations
+
 const ActivityDetail = () => {
 
   const { id } = useParams();

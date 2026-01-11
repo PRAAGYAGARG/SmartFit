@@ -17,23 +17,49 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+//Generates AI-based fitness recommendations from activity data.
+//Builds prompt for AI model
+//Calls GeminiService
+//Parses AI response
+//Converts it into Recommendation entity
+//Handles fallback logic if AI fails
+
 @Service
 @Slf4j
 @AllArgsConstructor
 public class ActivityAIService {
+
+    // Service responsible for communicating with Google Gemini API
+    // This service sends prompts to Gemini and receives AI-generated responses
     private final GeminiService geminiService;
 
+    // Main method that is called when an activity event is consumed from Kafka
+    // It generates AI recommendations for a given activity
     public Recommendation generateRecommendation(Activity activity) {
+
+        // Create a detailed prompt using activity data
         String prompt = createPromptForActivity(activity);
+
+        // Call Gemini API using GeminiService and get raw AI response (JSON as String)
         String aiResponse = geminiService.getRecommendations(prompt);
+
+        // Log the raw AI response for debugging and visibility
         log.info("RESPONSE FROM AI {} ", aiResponse);
+
+        // Process the AI response and convert it into Recommendation entity
         return processAIResponse(activity, aiResponse);
     }
 
+    // Processes the raw AI response string and converts it into Recommendation object
     private Recommendation processAIResponse(Activity activity, String aiResponse) {
-        try {
+        try { 
+            // Jackson ObjectMapper used to parse JSON responses
             ObjectMapper mapper = new ObjectMapper();
+
+            // Parse the full Gemini API response JSON
             JsonNode rootNode = mapper.readTree(aiResponse);
+
+            // Navigate through Gemini response structure to extract the text output
             JsonNode textNode = rootNode.path("candidates")
                     .get(0)
                     .path("content")
@@ -41,25 +67,32 @@ public class ActivityAIService {
                     .get(0)
                     .path("text");
 
+            // Gemini returns JSON wrapped inside markdown ```json blocks
+            // Remove those wrappers to extract clean JSON content
             String jsonContent = textNode.asText()
                     .replaceAll("```json\\n","")
                     .replaceAll("\\n```","")
                     .trim();
 
-//            log.info("RESPONSE FROM CLEANED AI {} ", jsonContent);
-
+            // Parse the cleaned JSON content returned by Gemini
             JsonNode analysisJson = mapper.readTree(jsonContent);
+
+            // Extract the "analysis" section from the AI response
             JsonNode analysisNode = analysisJson.path("analysis");
+
+            // Build a single formatted string containing all analysis sections
             StringBuilder fullAnalysis = new StringBuilder();
             addAnalysisSection(fullAnalysis, analysisNode, "overall", "Overall:");
             addAnalysisSection(fullAnalysis, analysisNode, "pace", "Pace:");
             addAnalysisSection(fullAnalysis, analysisNode, "heartRate", "Heart Rate:");
             addAnalysisSection(fullAnalysis, analysisNode, "caloriesBurned", "Calories:");
 
+            // Extract structured lists from AI response
             List<String> improvements = extractImprovements(analysisJson.path("improvements"));
             List<String> suggestions = extractSuggestions(analysisJson.path("suggestions"));
             List<String> safety = extractSafetyGuidelines(analysisJson.path("safety"));
 
+            // Build and return Recommendation entity to be saved in DB
             return Recommendation.builder()
                     .activityId(activity.getId())
                     .userId(activity.getUserId())
@@ -72,11 +105,13 @@ public class ActivityAIService {
                     .build();
 
         } catch (Exception e) {
+            // If AI response parsing fails, return a default recommendation
             e.printStackTrace();
             return createDefaultRecommendation(activity);
         }
     }
 
+    // Fallback recommendation when AI response fails or is invalid
     private Recommendation createDefaultRecommendation(Activity activity) {
         return Recommendation.builder()
                 .activityId(activity.getId())
@@ -94,6 +129,7 @@ public class ActivityAIService {
                 .build();
     }
 
+    // Extracts safety guidelines from AI response JSON
     private List<String> extractSafetyGuidelines(JsonNode safetyNode) {
         List<String> safety = new ArrayList<>();
         if (safetyNode.isArray()) {
@@ -104,6 +140,7 @@ public class ActivityAIService {
                 safety;
     }
 
+    // Extracts workout suggestions from AI response JSON
     private List<String> extractSuggestions(JsonNode suggestionsNode) {
         List<String> suggestions = new ArrayList<>();
         if (suggestionsNode.isArray()) {
@@ -118,6 +155,7 @@ public class ActivityAIService {
                 suggestions;
     }
 
+    // Extracts improvement areas and recommendations from AI response JSON
     private List<String> extractImprovements(JsonNode improvementsNode) {
         List<String> improvements = new ArrayList<>();
         if (improvementsNode.isArray()) {
@@ -130,19 +168,23 @@ public class ActivityAIService {
         return improvements.isEmpty() ?
                 Collections.singletonList("No specific improvements provided") :
                 improvements;
-
     }
 
-    //    "overall": "This was an excellent"
-    // Overall: This was an excellent
-    private void addAnalysisSection(StringBuilder fullAnalysis, JsonNode analysisNode, String key, String prefix) {
-    if (!analysisNode.path(key).isMissingNode()){
-     fullAnalysis.append(prefix)
-             .append(analysisNode.path(key).asText())
-             .append("\n\n");
-    }
+    // Appends a specific analysis section (overall, pace, etc.) to the full analysis text
+    private void addAnalysisSection(StringBuilder fullAnalysis,
+                                    JsonNode analysisNode,
+                                    String key,
+                                    String prefix) {
+
+        if (!analysisNode.path(key).isMissingNode()){
+            fullAnalysis.append(prefix)
+                    .append(analysisNode.path(key).asText())
+                    .append("\n\n");
+        }
     }
 
+    // Creates a structured prompt that is sent to Gemini AI
+    // Forces Gemini to return output in a strict JSON format
     private String createPromptForActivity(Activity activity) {
         return String.format("""
         Analyze this fitness activity and provide detailed recommendations in the following EXACT JSON format:

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+//to access db
 @Repository
 public interface RecommendationRepository extends MongoRepository<Recommendation, String> {
     List<Recommendation> findByUserId(String userId);

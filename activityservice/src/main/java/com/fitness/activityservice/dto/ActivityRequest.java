@@ -6,6 +6,10 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+//The form user fills for activity ie selecting activity,
+// duratn,colories and then adding that activity
+//Now the details sent to db from that form are:
+
 @Data
 public class ActivityRequest {
     private String userId;

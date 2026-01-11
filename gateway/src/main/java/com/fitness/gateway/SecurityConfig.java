@@ -26,6 +26,7 @@ public class SecurityConfig {
                 .build();
     }
 
+    //code to resolve CORS error        
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();

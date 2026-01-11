@@ -9,10 +9,12 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+// Creating ActivityResponse DTO to send safe data back to client
+
 @Data
 public class ActivityResponse {
     private String id;
-    private String userId;
+    private String userId; 
     private ActivityType type;
     private Integer duration;
     private Integer caloriesBurned;

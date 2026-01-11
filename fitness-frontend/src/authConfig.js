@@ -6,3 +6,5 @@ export const authConfig = {
   scope: 'openid profile email offline_access',
   onRefreshTokenExpire: (event) => event.logIn(),
 }
+
+//frontend uses the library react-oauth2-code-pkce and it needs to know the above mentioned config

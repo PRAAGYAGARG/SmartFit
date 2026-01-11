@@ -11,3 +11,11 @@ public class UserserviceApplication {
 	}
 
 }
+
+//It is the entry point of the User microservice , Just like server.js in MERN.
+//Starts the application
+//Boots up the embedded web server (Tomcat)
+//Opens the port defined in application.yml
+//Equivalent to: app.listen(PORT);  in mern stack
+
+

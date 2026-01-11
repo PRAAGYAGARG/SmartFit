@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router';
 import { Card, CardContent, Grid, Typography } from '@mui/material';
 import { getActivities } from '../services/api';
 
+//it is the section that shows all the activities in a list below the activity form on home pg
+
 const ActivityList = () => {
 
-  const [activities, setActivities] = useState([]);
+  const [activities, setActivities] = useState([]); //initialising with empty list [] as later took all activities and stored in list
   const navigate = useNavigate();
 
   const fetchActivities = async () => {
@@ -13,10 +15,10 @@ const ActivityList = () => {
       const response = await getActivities();
       setActivities(response.data);
     } catch (error) {
-      console.error(error);
+      console.error(error); 
     }
   }
-
+  //using useEffect to fetch activities
   useEffect(() => {
     fetchActivities();
   }, []);

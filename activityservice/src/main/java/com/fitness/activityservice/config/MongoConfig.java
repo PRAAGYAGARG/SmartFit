@@ -7,3 +7,4 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @EnableMongoAuditing
 public class MongoConfig {
 }
+//created so that Activity model me @CreatedDate and @LastModifiedDate are automatically populated with values
