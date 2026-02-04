@@ -8,15 +8,15 @@ The project demonstrates **real-world backend system design**, including **API G
 
 ## 🚀 Key Features
 
-* 🧩 **Microservices Architecture** for modular and scalable system design
-* 🌐 **API Gateway** for centralized request routing and service orchestration
-* 🔍 **Service Discovery** using Eureka Server
-* 🔐 **Secure Authentication & Authorization** via Keycloak
-* ⚡ **Event-Driven Communication** between services using Apache Kafka
-* 🧠 **AI-Powered Fitness Recommendations** using Google Gemini API
-* 🗂️ **Centralized Configuration Management** with Spring Cloud Config Server
-* 💻 **Modern Frontend UI** built with React
-* 📈 Designed to be **scalable, fault-tolerant, and production-ready**
+* **Microservices Architecture** for modular and scalable system design
+* **API Gateway** for centralized request routing and service orchestration
+* **Service Discovery** using Eureka Server
+* **Secure Authentication & Authorization** via Keycloak
+* **Event-Driven Communication** between services using Apache Kafka
+* **AI-Powered Fitness Recommendations** using Google Gemini API
+* **Centralized Configuration Management** with Spring Cloud Config Server
+* **Modern Frontend UI** built with React
+* Designed to be **scalable, fault-tolerant, and production-ready**
 
 ---
 
@@ -62,7 +62,7 @@ The project demonstrates **real-world backend system design**, including **API G
 
 * Google Gemini API
 
-### Configuration & DevOps
+### Config & DevOps
 
 * Spring Cloud Config Server
 * Docker
@@ -77,20 +77,20 @@ The project demonstrates **real-world backend system design**, including **API G
 
 ## 🎯 Project Objectives
 
-* To understand and implement **microservices architecture**
-* To explore **event-driven system design** using Kafka
-* To integrate **AI services** into backend systems
-* To build a **secure and scalable full-stack application**
-* To gain hands-on experience with **cloud-native backend patterns**
+* Implement a **microservices architecture**
+* Explore **event-driven design** using Kafka
+* Integrate **AI services** into backend systems
+* Build a **secure and scalable full-stack application**
+* Gain hands-on experience with **cloud-native backend patterns**
 
 ---
 
 ## 📌 Future Enhancements
 
-* Container orchestration using Kubernetes
+* Kubernetes-based container orchestration
 * Deployment on AWS / GCP
 * CI/CD pipeline integration
-* Advanced AI-driven analytics dashboards
+* Advanced AI-driven analytics
 * Mobile application support
 
 ---
@@ -98,6 +98,6 @@ The project demonstrates **real-world backend system design**, including **API G
 ## 👩‍💻 Author
 
 **Praagya Garg**
-📌 Computer Science Student
-💡 Interested in Backend Engineering, Cloud, and System Design
+Computer Science Student
+Interested in Backend Engineering, Cloud, and System Design
 
