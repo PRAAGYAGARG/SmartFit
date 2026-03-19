@@ -93,10 +93,3 @@ The project demonstrates real world backend system design, including API Gateway
 * Advanced AI driven analytics
 * Mobile application support
 
----
-
-## Author
-
-Praagya Garg
-Computer Science Student
-
