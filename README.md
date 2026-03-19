@@ -1,4 +1,4 @@
-SmartFit AI – Intelligent Fitness Platform
+# SmartFit AI – Intelligent Fitness Platform
 
 SmartFit AI is a full stack, microservices based fitness application designed to deliver personalized fitness recommendations using AI, while ensuring scalability, security, and real time communication through modern cloud native architecture.
 
@@ -6,91 +6,97 @@ The project demonstrates real world backend system design, including API Gateway
 
 ---
 
-Key Features
+## Key Features
 
-Microservices Architecture for modular and scalable system design
-API Gateway for centralized request routing and service orchestration
-Service Discovery using Eureka Server
-Secure Authentication and Authorization via Keycloak
-Event Driven Communication between services using Apache Kafka
-AI Powered Fitness Recommendations using Google Gemini API
-Centralized Configuration Management with Spring Cloud Config Server
-Modern Frontend UI built with React
-Designed to be scalable, fault tolerant, and production ready
-
----
-
-System Architecture High Level
-
-Frontend React application for user interaction
-API Gateway Spring Cloud Gateway
-Backend Services Spring Boot microservices
-Service Registry Eureka Server
-Authentication Keycloak OAuth 2.0 OpenID Connect
-Messaging Apache Kafka for asynchronous communication
-AI Integration Google Gemini API
-Configuration Spring Cloud Config Server
-Database PostgreSQL MySQL
+* Microservices Architecture for modular and scalable system design
+* API Gateway for centralized request routing and service orchestration
+* Service Discovery using Eureka Server
+* Secure Authentication and Authorization via Keycloak
+* Event Driven Communication between services using Apache Kafka
+* AI Powered Fitness Recommendations using Google Gemini API
+* Centralized Configuration Management with Spring Cloud Config Server
+* Modern Frontend UI built with React
+* Designed to be scalable, fault tolerant, and production ready
 
 ---
 
-Tech Stack
+## System Architecture High Level
 
-Frontend
-React
-
-Backend and Microservices
-Spring Boot
-Spring Cloud Gateway
-Spring Cloud Netflix Eureka
-
-Security
-Keycloak
-
-Messaging
-Apache Kafka
-
-Database
-PostgreSQL MySQL
-
-AI
-Google Gemini API
-
-Config and DevOps
-Spring Cloud Config Server
-Docker
-
-Tools
-Git
-GitHub
-Postman
+* Frontend React application for user interaction
+* API Gateway Spring Cloud Gateway
+* Backend Services Spring Boot microservices
+* Service Registry Eureka Server
+* Authentication Keycloak OAuth 2.0 OpenID Connect
+* Messaging Apache Kafka for asynchronous communication
+* AI Integration Google Gemini API
+* Configuration Spring Cloud Config Server
+* Database PostgreSQL MySQL
 
 ---
 
-Project Objectives
+## Tech Stack
 
-Implement a microservices architecture
-Explore event driven design using Kafka
-Integrate AI services into backend systems
-Build a secure and scalable full stack application
-Gain hands on experience with cloud native backend patterns
+**Frontend**
+
+* React
+
+**Backend and Microservices**
+
+* Spring Boot
+* Spring Cloud Gateway
+* Spring Cloud Netflix Eureka
+
+**Security**
+
+* Keycloak
+
+**Messaging**
+
+* Apache Kafka
+
+**Database**
+
+* PostgreSQL MySQL
+
+**AI**
+
+* Google Gemini API
+
+**Config and DevOps**
+
+* Spring Cloud Config Server
+* Docker
+
+**Tools**
+
+* Git
+* GitHub
+* Postman
 
 ---
 
-Future Enhancements
+## Project Objectives
 
-Kubernetes based container orchestration
-Deployment on AWS GCP
-CI CD pipeline integration
-Advanced AI driven analytics
-Mobile application support
+* Implement a microservices architecture
+* Explore event driven design using Kafka
+* Integrate AI services into backend systems
+* Build a secure and scalable full stack application
+* Gain hands on experience with cloud native backend patterns
 
 ---
 
-Author
+## Future Enhancements
+
+* Kubernetes based container orchestration
+* Deployment on AWS GCP
+* CI CD pipeline integration
+* Advanced AI driven analytics
+* Mobile application support
+
+---
+
+## Author
 
 Praagya Garg
 Computer Science Student
-Interested in Backend Engineering Cloud and System Design
-
 
